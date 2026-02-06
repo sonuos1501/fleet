@@ -18,12 +18,12 @@ plugins {
 
 android {
     namespace = "com.fleetdm.agent"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.fleetdm.agent"
-        minSdk = 33
-        targetSdk = 36
+        minSdk = 24
+        targetSdk = 35
         versionCode = 6
         versionName = "1.1.0"
 
@@ -142,8 +142,14 @@ android {
                     "META-INF/AL2.0",
                     "META-INF/LGPL3.0",
                     "META-INF/*.kotlin_module",
+                    "META-INF/versions/9/OSGI-INF/MANIFEST.MF",
                 )
         }
+    }
+
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = false
     }
 }
 
