@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <restrictions xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- ========================================================== -->
+    <!-- [THỦ CÔNG] Admin MDM phải nhập khi deploy app              -->
+    <!-- Bắt buộc có đủ 3 trường này thiết bị mới enroll được      -->
+    <!-- ========================================================== -->
+
     <restriction
         android:key="enroll_secret"
         android:title="@string/enroll_secret_title"
@@ -14,10 +19,15 @@
         android:description="@string/server_url_description" />
 
     <restriction
-            android:key="host_uuid"
+        android:key="host_uuid"
         android:title="@string/host_uuid_title"
         android:restrictionType="string"
         android:description="@string/host_uuid_description" />
+
+    <!-- ========================================================== -->
+    <!-- [TỰ ĐỘNG] Fleet server push xuống, KHÔNG cần nhập tay     -->
+    <!-- Server quản lý toàn bộ: id, status, operation, uuid       -->
+    <!-- ========================================================== -->
 
     <restriction
         android:key="certificate_templates"

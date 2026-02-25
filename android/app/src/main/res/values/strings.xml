@@ -8,31 +8,51 @@
     <string name="certificate_list_no_certificates">No certificates installed</string>
     <string name="app_version_title">App version</string>
 
-    <!-- ============================================================ -->
-    <!-- Managed Configuration (MDM push xuống thiết bị)              -->
-    <!-- ============================================================ -->
+    <!-- ================================================================ -->
+    <!-- MANAGED CONFIGURATION — Cấu hình MDM push xuống thiết bị        -->
+    <!-- ================================================================ -->
 
-    <!-- [THỦ CÔNG] Admin MDM cấu hình 3 trường này khi deploy app -->
-    <!-- Đây là thông tin bắt buộc để thiết bị enroll vào Fleet server -->
+
+    <!-- ┌──────────────────────────────────────────────────────────────┐ -->
+    <!-- │  [THỦ CÔNG] Admin MDM phải nhập 3 trường dưới đây           │ -->
+    <!-- │  Bắt buộc có đủ thì thiết bị mới enroll được vào Fleet      │ -->
+    <!-- └──────────────────────────────────────────────────────────────┘ -->
+
+    <!-- key: enroll_secret — [THỦ CÔNG] Lấy từ Fleet UI > Settings -->
     <string name="enroll_secret_title">Enroll secret</string>
     <string name="enroll_secret_description">Secret used to enroll in a fleet instance</string>
+
+    <!-- key: server_url — [THỦ CÔNG] VD: https://fleet.company.com -->
     <string name="server_url_title">Fleet base URL</string>
     <string name="server_url_description">The base URL of the fleet server</string>
+
+    <!-- key: host_uuid — [THỦ CÔNG] UUID định danh thiết bị -->
     <string name="host_uuid_title">Host UUID</string>
     <string name="host_uuid_description">The host UUID to present to Fleet during enrollment</string>
 
-    <!-- [TỰ ĐỘNG] Fleet server tự động push certificate templates   -->
-    <!-- xuống thiết bị qua MDM sau khi enroll thành công.            -->
-    <!-- Admin KHÔNG cần cấu hình thủ công các trường bên dưới.      -->
-    <!-- Fleet server quản lý: id, status, operation, uuid            -->
+
+    <!-- ┌──────────────────────────────────────────────────────────────┐ -->
+    <!-- │  [TỰ ĐỘNG] Fleet server push xuống — KHÔNG cần nhập tay     │ -->
+    <!-- │  Server quản lý toàn bộ: id, status, operation, uuid        │ -->
+    <!-- └──────────────────────────────────────────────────────────────┘ -->
+
+    <!-- key: certificate_templates — [TỰ ĐỘNG] Mảng bundle từ server -->
     <string name="certificate_templates_title">Certificates templates</string>
     <string name="certificate_templates_description">Array of bundles containing certificate template information</string>
+
+    <!-- key: certificate_template — [TỰ ĐỘNG] Mỗi bundle chứa 1 template -->
     <string name="certificate_template_title">Certificate template</string>
     <string name="certificate_template_description">Certificate template information</string>
+
+    <!-- key: certificate_template.id — [TỰ ĐỘNG] ID do server gán -->
     <string name="certificate_template_id_title">Certificate template ID</string>
     <string name="certificate_template_id_description">Certificate template ID to be requested</string>
+
+    <!-- key: certificate_template.status — [TỰ ĐỘNG] Server cập nhật -->
     <string name="certificate_template_status_title">Certificate template status</string>
     <string name="certificate_template_status_description">Current status of the certificate template</string>
+
+    <!-- key: certificate_template.operation — [TỰ ĐỘNG] install hoặc remove -->
     <string name="certificate_template_operation_title">Certificate template operation</string>
     <string name="certificate_template_operation_description">Operation to perform (install or remove)</string>
 </resources>
