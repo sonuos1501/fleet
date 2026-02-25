@@ -8,11 +8,23 @@
     <string name="certificate_list_no_certificates">No certificates installed</string>
     <string name="app_version_title">App version</string>
 
-    <!-- Managed Configuration -->
+    <!-- ============================================================ -->
+    <!-- Managed Configuration (MDM push xuống thiết bị)              -->
+    <!-- ============================================================ -->
+
+    <!-- [THỦ CÔNG] Admin MDM cấu hình 3 trường này khi deploy app -->
+    <!-- Đây là thông tin bắt buộc để thiết bị enroll vào Fleet server -->
     <string name="enroll_secret_title">Enroll secret</string>
     <string name="enroll_secret_description">Secret used to enroll in a fleet instance</string>
     <string name="server_url_title">Fleet base URL</string>
     <string name="server_url_description">The base URL of the fleet server</string>
+    <string name="host_uuid_title">Host UUID</string>
+    <string name="host_uuid_description">The host UUID to present to Fleet during enrollment</string>
+
+    <!-- [TỰ ĐỘNG] Fleet server tự động push certificate templates   -->
+    <!-- xuống thiết bị qua MDM sau khi enroll thành công.            -->
+    <!-- Admin KHÔNG cần cấu hình thủ công các trường bên dưới.      -->
+    <!-- Fleet server quản lý: id, status, operation, uuid            -->
     <string name="certificate_templates_title">Certificates templates</string>
     <string name="certificate_templates_description">Array of bundles containing certificate template information</string>
     <string name="certificate_template_title">Certificate template</string>
@@ -23,6 +35,4 @@
     <string name="certificate_template_status_description">Current status of the certificate template</string>
     <string name="certificate_template_operation_title">Certificate template operation</string>
     <string name="certificate_template_operation_description">Operation to perform (install or remove)</string>
-    <string name="host_uuid_title">Host UUID</string>
-    <string name="host_uuid_description">The host UUID to present to Fleet during enrollment</string>
 </resources>
