@@ -13,7 +13,14 @@
     "test": "jest --config ./frontend/test/jest.config.js",
     "test:ci": "jest --config ./frontend/test/jest.config.js --ci --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "setup": "docker compose up -d && yarn install --ignore-engines && make fleet && sleep 10 && ./build/fleet prepare db --dev && NODE_ENV=development npx webpack --progress && go run github.com/kevinburke/go-bindata/go-bindata -debug -pkg=bindata -tags full -o=server/bindata/generated.go frontend/templates/ assets/... server/mail/templates",
+    "dev": "NODE_ENV=development npx webpack --progress --watch & ./build/fleet serve --dev --dev_license",
+    "dev:server": "./build/fleet serve --dev --dev_license",
+    "dev:frontend": "NODE_ENV=development npx webpack --progress --watch",
+    "dev:build": "make fleet",
+    "dev:docker:up": "docker compose up -d",
+    "dev:docker:down": "docker compose down"
   },
   "dependencies": {
     "@sgress454/node-sql-parser": "5.4.0-fork.1",
