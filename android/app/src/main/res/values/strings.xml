@@ -22,7 +22,7 @@
     <string name="enroll_secret_title">Enroll secret</string>
     <string name="enroll_secret_description">Secret used to enroll in a fleet instance</string>
 
-    <!-- key: server_url — [THỦ CÔNG] VD: https://fleet.company.com -->
+    <!-- key: server_url — [THỦ CÔNG] VD: https://192.168.2.39:8080 -->
     <string name="server_url_title">Fleet base URL</string>
     <string name="server_url_description">The base URL of the fleet server</string>
 
