@@ -1,0 +1,17 @@
+{
+  "passwordRequirements": {
+    "requirePasswordUnlock": "REQUIRE_EVERY_DAY",
+    "passwordMinimumLength": 6,
+    "passwordQuality": "NUMERIC"
+  },
+  "screenCaptureDisabled": false,
+  "cameraDisabled": false,
+  "keyguardDisabledFeatures": [
+    "TRUST_AGENTS",
+    "UNREDACTED_NOTIFICATIONS"
+  ],
+  "funDisabled": false,
+  "bluetoothDisabled": false,
+  "wifiConfigDisabled": false,
+  "usbFileTransferDisabled": false
+}
