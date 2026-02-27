@@ -10,8 +10,11 @@
     "TRUST_AGENTS",
     "UNREDACTED_NOTIFICATIONS"
   ],
-  "funDisabled": false,
   "bluetoothDisabled": false,
   "wifiConfigDisabled": false,
-  "usbFileTransferDisabled": false
+  "usbFileTransferDisabled": false,
+  "modifyAccountsDisabled": true,
+  "factoryResetDisabled": true,
+  "networkResetDisabled": true,
+  "kioskCustomLauncherEnabled": true
 }
