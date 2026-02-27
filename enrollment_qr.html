@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Android Enrollment QR Codes</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #2d1b69 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            width: 380px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+        }
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            color: #c4b5fd;
+        }
+        .card .desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .qr-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .info {
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.78rem;
+            color: #a5b4fc;
+            word-break: break-all;
+            line-height: 1.6;
+        }
+        .info strong { color: #c4b5fd; }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .badge-google { background: #1a472a; color: #4ade80; }
+        .badge-dpc { background: #3b1a47; color: #e879f9; }
+        .badge-url { background: #1a3047; color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Fleet Android MDM Enrollment</h1>
+    <p class="subtitle">Scan QR code on Android device to enroll</p>
+
+    <div class="cards">
+        <!-- Card 1: Google Enrollment URL -->
+        <div class="card">
+            <span class="badge badge-google">✅ RECOMMENDED</span>
+            <h2>Google Enterprise Enrollment</h2>
+            <p class="desc">Quét trên thiết bị Android đã factory reset. Thiết bị sẽ tự động enroll qua Google Android Management.</p>
+            <div class="qr-container" id="qr-google"></div>
+            <div class="info">
+                <strong>URL:</strong> https://enterprise.google.com/android/enroll?et=LFPSMUNQJDJKEPQEWXNX
+            </div>
+        </div>
+
+        <!-- Card 2: DPC Provisioning QR -->
+        <div class="card">
+            <span class="badge badge-dpc">📱 DPC EXTRAS</span>
+            <h2>DPC Provisioning (Full)</h2>
+            <p class="desc">QR code với đầy đủ thông tin provisioning cho Android Device Policy Controller. Quét khi setup wizard.</p>
+            <div class="qr-container" id="qr-dpc"></div>
+            <div class="info">
+                <strong>Enroll Secret:</strong> ySdo+qYdwUptjn+CBiGETKXfMss6dlZR<br>
+                <strong>Server:</strong> https://keegan-unconserving-puerilely.ngrok-free.dev<br>
+                <strong>Token:</strong> LFPSMUNQJDJKEPQEWXNX
+            </div>
+        </div>
+
+        <!-- Card 3: Simple Enrollment URL -->
+        <div class="card">
+            <span class="badge badge-url">🔗 SIMPLE URL</span>
+            <h2>Fleet Enrollment URL</h2>
+            <p class="desc">URL trực tiếp tới Fleet enrollment endpoint. Mở trên trình duyệt Android.</p>
+            <div class="qr-container" id="qr-url"></div>
+            <div class="info">
+                <strong>URL:</strong> https://keegan-unconserving-puerilely.ngrok-free.dev/api/v1/fleet/android_enterprise/enrollment_token?enroll_secret=ySdo%2BqYdwUptjn%2BCBiGETKXfMss6dlZR
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // QR 1: Google Enterprise Enrollment URL
+        new QRCode(document.getElementById("qr-google"), {
+            text: "https://enterprise.google.com/android/enroll?et=LFPSMUNQJDJKEPQEWXNX",
+            width: 280,
+            height: 280,
+            colorDark: "#1a1a2e",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        // QR 2: DPC Provisioning payload
+        const dpcPayload = JSON.stringify({
+            "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "com.google.android.apps.work.clouddpc/.receivers.CloudDeviceAdminReceiver",
+            "android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM": "I5YvS0O5hXY46mb01BlRjq4oJJGs2kuUcHvVkAPEXlg",
+            "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "https://play.google.com/managed/downloadManagingApp?identifier=setup",
+            "android.app.extra.PROVISIONING_ADMIN_EXTRAS_BUNDLE": {
+                "com.google.android.apps.work.clouddpc.EXTRA_ENROLLMENT_TOKEN": "LFPSMUNQJDJKEPQEWXNX"
+            }
+        });
+        new QRCode(document.getElementById("qr-dpc"), {
+            text: dpcPayload,
+            width: 280,
+            height: 280,
+            colorDark: "#2d1b69",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.L
+        });
+
+        // QR 3: Simple Fleet enrollment URL
+        new QRCode(document.getElementById("qr-url"), {
+            text: "https://keegan-unconserving-puerilely.ngrok-free.dev/api/v1/fleet/android_enterprise/enrollment_token?enroll_secret=ySdo%2BqYdwUptjn%2BCBiGETKXfMss6dlZR",
+            width: 280,
+            height: 280,
+            colorDark: "#1a3047",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    </script>
+</body>
+</html>
