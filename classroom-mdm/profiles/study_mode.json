@@ -1,0 +1,16 @@
+{
+  "passwordRequirements": {
+    "requirePasswordUnlock": "REQUIRE_EVERY_DAY",
+    "passwordMinimumLength": 4,
+    "passwordQuality": "NUMERIC"
+  },
+  "screenCaptureDisabled": false,
+  "cameraDisabled": true,
+  "bluetoothDisabled": false,
+  "wifiConfigDisabled": true,
+  "usbFileTransferDisabled": true,
+  "modifyAccountsDisabled": true,
+  "factoryResetDisabled": true,
+  "networkResetDisabled": true,
+  "maximumTimeToLock": 300000
+}

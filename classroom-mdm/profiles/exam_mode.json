@@ -1,0 +1,17 @@
+{
+  "passwordRequirements": {
+    "requirePasswordUnlock": "REQUIRE_EVERY_DAY",
+    "passwordMinimumLength": 4,
+    "passwordQuality": "NUMERIC"
+  },
+  "screenCaptureDisabled": true,
+  "cameraDisabled": true,
+  "bluetoothDisabled": true,
+  "wifiConfigDisabled": true,
+  "usbFileTransferDisabled": true,
+  "modifyAccountsDisabled": true,
+  "factoryResetDisabled": true,
+  "networkResetDisabled": true,
+  "maximumTimeToLock": 60000,
+  "kioskCustomLauncherEnabled": true
+}
